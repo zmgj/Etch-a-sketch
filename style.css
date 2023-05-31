@@ -27,7 +27,7 @@ body{
     padding: 10px;
 }
 
-#container{
+.board{
     width: 500px;
     height: 500px;
     justify-content: center;
