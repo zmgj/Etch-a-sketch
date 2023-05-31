@@ -1,5 +1,3 @@
-
-
 //create 16x16 grid square of DIVS!
 function createBoard(size) {
     
@@ -22,4 +20,27 @@ function createBoard(size) {
     }
 
 }
-createBoard(50);
+
+
+const numberOfSquares = document.querySelector("#numberOfSquares");
+
+//call button use it to call createBoard
+numberOfSquares.addEventListener('click', function () {
+    let size = getSize();
+    createBoard(size);
+    
+})
+
+//create prompt
+function getSize() {
+    let input = prompt("Choose the number of Rows and Columns (max. 100)", "");
+    if(input > 0 && input <= 100) {
+        return input;
+    
+    } else {
+        getSize();
+    }
+    
+}
+
+
