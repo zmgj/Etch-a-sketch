@@ -12,10 +12,11 @@ function createBoard(size) {
     let numDivs = size * size;
     
     //Creates divs for each square
+    //change div color when hovering
     for(i = 0; i < numDivs; i++) {
         //createElement (div)
         let div = document.createElement("div");
-        div.style.backgroundColor = "yellow";
+        div.addEventListener("mouseover", colorDiv);
         board.insertAdjacentElement("beforeend", div)
     }
 
@@ -43,4 +44,25 @@ function getSize() {
     
 }
 
+//random color button called from 'mouseOver' addEventListener
+function colorDiv() {
+    if(color == 'random') {
+        //hue, saturation, lightness 
+        //this == get this div
+        this.style.backgroundColor = `hsl(${Math.random() * 360} , ${Math.random() * 100}%, ${Math.random() * 100}%)`;
+    } else {
+        this.style.backgroundColor = 'black';
+    }
+}
 
+//board color
+function setColor(colorChoice) {
+    color = colorChoice
+}
+
+//reset board
+function resetBoard() {
+    //grab divs
+    let divs = document.querySelectorAll("div");
+    divs.forEach((div) => div.style.backgroundColor = "white");
+}
