@@ -1,5 +1,21 @@
+let click = false;
+
 //create 16x16 grid square of DIVS!
 function createBoard(size) {
+
+    //create function that draws only after clicking
+    // e = event
+    document.querySelector("body").addEventListener("click", function(e) {
+        if(e.target.tagName != "BUTTON") {
+            click = !click
+            let draw = document.querySelector("#draw");
+            if(click) {
+                draw.innerHTML = "Now You Can Draw";
+            } else {
+                draw.innerHTML = "You are not able to draw";
+            }
+        }
+    })
     
     // Grab .board class from HTML
     let board = document.querySelector(".board");
@@ -46,14 +62,17 @@ function getSize() {
 
 //random color button called from 'mouseOver' addEventListener
 function colorDiv() {
-    if(color == 'random') {
-        //hue, saturation, lightness 
-        //this == get this div
-        this.style.backgroundColor = `hsl(${Math.random() * 360} , ${Math.random() * 100}%, ${Math.random() * 100}%)`;
-    } else {
-        this.style.backgroundColor = 'black';
-    }
-}
+    //if click == true
+    if(click) {
+
+        if(color == 'random') {
+            //hue, saturation, lightness 
+            //this == get this div
+            this.style.backgroundColor = `hsl(${Math.random() * 360} , ${Math.random() * 100}%, ${Math.random() * 100}%)`;
+        } else {
+            this.style.backgroundColor = 'black';
+        }
+}}
 
 //board color
 function setColor(colorChoice) {
